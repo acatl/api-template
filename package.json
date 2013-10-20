@@ -2,7 +2,7 @@
   "name": "api-template",
   "version": "0.1.0",
   "description": "Define and build your project's api with mocked data. ",
-  "main": "api-server.js",
+  "main": "api-template.js",
   "scripts": {
     "test": "grunt test"
   },
