@@ -2,8 +2,6 @@
 
 Define and build your project's api with mocked data. 
 
-## What is this?
-
 **api-template** is a lightweight api generator, it uses 
 [mustache.js](https://npmjs.org/package/mustache) and 
 [datafixture.js](https://github.com/acatl/datafixture.js) to build from simple 
@@ -11,9 +9,9 @@ hardcoded server responses up to complex dynamically generated api results.
 
 It gives you enough control to:
 
-* map a path to a source
-* set the reponse's http headers (optional)
-* define the response of different types:
+* map a **route** to a source
+* set the reponse's **http headers** (optional)
+* different types of response avaiable:
     * hardcoded (static)
     * templated response (mustache + json)
     * dynamic templated response (mustache + json + datafixture)
@@ -22,21 +20,14 @@ It gives you enough control to:
 
 ### Dependencies
 
-* [NodeJS](http://nodejs.org/)
 * [Express](http://expressjs.com/)
-* [mustache.js](https://npmjs.org/package/mustache)
-* [datafixture.js](https://npmjs.org/package/datafixture.js)
-
-### Install
-
-```bash
-npm install api-template --save-dev
-```
 
 ## How it works
 
 You will need to create a json file with your API's definition. The file will
 need to have the following structure: 
+
+example `api.json` file:
 
 ```json
 {
@@ -60,6 +51,32 @@ need to have the following structure:
     }
 }
 ```
+Example implementation:
+
+```js
+var express = require("express");
+var path = require("path");
+var http = require("http");
+var api = require("api-template");
+
+var app = express();
+
+app.configure(function() {
+    app.set("port", process.env.PORT || 3000);
+    app.use(express.logger("dev"));
+    app.use(express.bodyParser());
+    console.log(__dirname);
+    return app.use(express["static"](path.join(__dirname, "/public")));
+});
+
+// register your api
+api.register(app,'api.json');
+
+http.createServer(app).listen(app.get('port'), function() {
+    return console.log("Express server listening on port " + app.get('port'));
+});
+```
+
 ### api hash
 
 `api` : collection of api path definitions
@@ -139,9 +156,10 @@ is done by setting the flag `"dynamic"` to `true`:
 Because we are using ExpressJS we can generate dynamic routes. 
 
 Some examples:
-* `/home` => http://localhost:3000/home
-* `/book/:bookId` => http://localhost:3000/book/99921-58-10-7
-* `/author/:authorId/books/new` => http://localhost:3000/author/darek/books/new
+
+- `/home` => http://localhost:3000/home
+- `/book/:bookId` => http://localhost:3000/book/99921-58-10-7
+- `/author/:authorId/books/new` => http://localhost:3000/author/darek/books/new
 
 ExpressJS passes a request object for each service, this one has all information 
 passed into the url, including route variables and query variables. This object
