@@ -1,7 +1,7 @@
 {
-  "name": "apitemplate",
+  "name": "api-template",
   "version": "0.1.0",
-  "description": "api generator",
+  "description": "Define and build your project's api with mocked data. ",
   "main": "api-server.js",
   "scripts": {
     "test": "grunt test"
