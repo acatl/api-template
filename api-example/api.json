@@ -1,0 +1,50 @@
+{
+    "version": "0.1.0",
+    "api": {
+        "/api/home": {
+            "header": {
+                "Content-Type": "application/json"
+            },
+            "response": "./api-example/services/home.json"
+        },
+        "/api/book/:bookId": {
+            "header": {
+                "Content-Type": "text/xml"
+            },
+            "response": {
+                "data": "./api-example/services/book.json",
+                "template": "./api-example/services/book.template"
+            }
+        },
+        "/api/books": {
+            "header": {
+                "Content-Type": "text/xml"
+            },
+            "response": {
+                "data": "./api-example/services/books.json",
+                "template": "./api-example/services/books.template",
+                "dynamic": true
+            }
+        },
+        "/api/author/:authorId": {
+            "header": {
+                "Content-Type": "application/json"
+            },
+            "response": {
+                "data": "./api-example/services/author.json",
+                "template": "./api-example/services/author.template",
+                "dynamic": true
+            }
+        },
+        "/api/isbn/:isbn": {
+            "header": {
+                "Content-Type": "application/json"
+            },
+            "response": {
+                "data": "./api-example/services/isbn.json",
+                "template": "./api-example/services/isbn.template",
+                "dynamic": true
+            }
+        }
+    }
+}

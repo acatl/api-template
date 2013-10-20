@@ -1,0 +1,33 @@
+{
+  "name": "apitemplate",
+  "version": "0.1.0",
+  "description": "api generator",
+  "main": "api-server.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/acatl/apitemplate.git"
+  },
+  "keywords": [
+    "api",
+    "mustache",
+    "json",
+    "generator",
+    "mock",
+    "datafixture"
+  ],
+  "author": "acatl pacheco <acatl.pacheco@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/acatl/apitemplate/issues"
+  },
+  "dependencies": {
+    "mustache": "~0.7.2",
+    "datafixture.js": "~0.1.3"
+  },
+  "devDependencies": {
+    "express": "3.x"
+  }
+}

@@ -1,0 +1,6 @@
+{
+    "book": {
+        "isbn": "{{request.params.isbn}}",
+        "title": "{{book.title}}"
+    }
+}

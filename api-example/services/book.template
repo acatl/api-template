@@ -1,0 +1,9 @@
+<?xml version="1.0" ?> 
+<book>
+    <title>{{name}}</title>
+    <authors>
+    {{#authors}}
+        <name>{{name}}</name>
+    {{/authors}}
+    </authors>
+</book>
