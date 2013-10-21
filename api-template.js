@@ -11,6 +11,17 @@
     var mustache = require("mustache");
     var datafixture = require("datafixture.js");
 
+    var extractData = function(tempalte){
+        var separator = "--";
+        var tokens = [];
+        if(tempalte.indexOf(separator)===0) {
+            tokens = tempalte.split(separator);
+            console.dir(tokens);
+            return tokens[2];
+        }
+        return tempalte;
+    };
+
     var buildResponse = function(pathSignature, path, request) {
         var header = path.header || {};
         var responseDefinition = path.response || {};
@@ -32,11 +43,11 @@
 
             step = "read template [" + responseDefinition.template +"]";
             if (responseDefinition.template) {
-                template = fs.readFileSync(responseDefinition.template, "utf-8");
+                template = extractData(fs.readFileSync(responseDefinition.template, "utf-8"));
             }
 
             step = "read source [" + sourceStreamPath +"]";
-            sourceStream = fs.readFileSync(sourceStreamPath, "utf-8");
+            sourceStream = extractData(fs.readFileSync(sourceStreamPath, "utf-8"));
             
             if (responseDefinition.dynamic === true) {
                 step = "parsing JSON source [" + sourceStreamPath +"]";

@@ -205,6 +205,25 @@ could look like:
 }
 ```
 
+## Support for comments
+
+If you wish to add comments to a file, comments must be at the top of the file 
+and wrapped with two dashes `--` at the begining and at the end of your comment.
+
+```json
+-- 
+some comment here 
+--
+{
+    "book": {
+        "isbn": "SOME-ISBN-NUMBER",
+        "title": "vitae dignissim"
+    }
+}
+```
+
+atm only one block of comments is supported per file.
+
 ## Next Steps:
 
 - complete RESTful support.
